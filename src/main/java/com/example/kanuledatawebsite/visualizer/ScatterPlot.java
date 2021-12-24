@@ -24,7 +24,9 @@ public class ScatterPlot{
 
     }
 
-    public void saveAsJpg(String filenameAddition) throws IOException {
-        ChartUtils.saveChartAsPNG(new File("src\\main\\resources\\static\\"+this.title+filenameAddition),chart,400,600);
+    public String saveAsJpg(String filenameAddition) throws IOException {
+        String filepath = "src\\main\\resources\\static\\"+this.title+filenameAddition;
+        ChartUtils.saveChartAsPNG(new File(filepath),chart,400,600);
+        return filepath;
     }
 }

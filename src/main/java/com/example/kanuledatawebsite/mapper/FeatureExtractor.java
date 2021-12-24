@@ -25,7 +25,7 @@ public class FeatureExtractor implements ResultSetExtractor<Feature> {
         ResultSetMetaData rsm = rs.getMetaData();
         for (int i = 1; i <= rsm.getColumnCount(); i++) {
             String columnName = rsm.getColumnName(i);
-            if (!Objects.equals(columnName, "Label") && !Objects.equals(columnName, "PatNr")){
+            if (!Objects.equals(columnName, "Status nach") && !Objects.equals(columnName, "PatNr")){
                 this.feature.setFeatureName(columnName);
             }
         }
@@ -36,7 +36,7 @@ public class FeatureExtractor implements ResultSetExtractor<Feature> {
     private HashMap<String, ArrayList<Float>>  CreateLabelvalueMap(ResultSet rs) throws SQLException{
         HashMap<String,ArrayList<Float>> LabelvalueMap = new HashMap<>();
         while( rs.next()){
-            LabelvalueMap.computeIfAbsent(rs.getString("Label"),k -> new ArrayList<>()).add(rs.getFloat(this.feature.getFeatureName()));
+            LabelvalueMap.computeIfAbsent(rs.getString("Status nach"),k -> new ArrayList<>()).add(rs.getFloat(this.feature.getFeatureName()));
         }
         return LabelvalueMap;
     }

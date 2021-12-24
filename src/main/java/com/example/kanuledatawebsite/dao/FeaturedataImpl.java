@@ -25,12 +25,13 @@ public class FeaturedataImpl implements Featuredata{
     @Override
     public Feature GetFeature(String featurename) {
         final String sqlStatement= "" +
-                "SELECT :featurename, Status_nach.PatientData" +
-                "FROM FeatureData" +
-                "INNER JOIN FeatureData ON FeatureData.PatNr = PatientData.PatNr";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
+                "SELECT :featurename, \"patientdata\".\"Status nach\" " +
+                "FROM featuredata " +
+                "INNER JOIN patientdata ON \"featuredata\".\"PatNr\" = \"patientdata\".\"PatNr\"";
+
+
         SqlParameterSource params = new MapSqlParameterSource()
-                .addValue("featurename",String.format("%s.FeatureData",featurename));
+                .addValue("featurename",String.format("\"featuredata\".\"%s\"",featurename));
         return parameterTemplate.query(sqlStatement,params,this.extractor);
 
     }
@@ -39,14 +40,13 @@ public class FeaturedataImpl implements Featuredata{
     @Override
     public Feature GetSummarizedFeature(String featurename) {
         final String sql_statement= "" +
-                "SELECT AVG(:featurename) ,Label.PatientData, PatNr" +
-                "FROM FeatureData" +
-                "INNER JOIN FeatureData ON FeatureData.PatNr = PatientData.PatNr"+
-                "GROUPBY PatNr";
+                "SELECT AVG(:featurename), \"patientdata\".\"Status nach\", \"featuredata\".\"PatNr\" " +
+                "FROM featuredata " +
+                "INNER JOIN patientdata ON \"featuredata\".\"PatNr\" = \"patientdata\".\"PatNr\" "+
+                "GROUP BY \"featuredata\".\"PatNr\",\"patientdata\".\"Status nach\"";
 
-        KeyHolder keyHolder = new GeneratedKeyHolder();
         SqlParameterSource params = new MapSqlParameterSource()
-                .addValue("featurename",String.format("%s.FeatureData",featurename));
+                .addValue("featurename",String.format("\"featuredata\".\"%s\"",featurename));
         return parameterTemplate.query(sql_statement,params,this.extractor);
     }
 }

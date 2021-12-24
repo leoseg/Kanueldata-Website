@@ -7,16 +7,14 @@ import com.example.kanuledatawebsite.visualizer.ScatterPlot;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/KanueleData")
@@ -36,14 +34,22 @@ public class ApplicationController {
     @GetMapping(value="/selectfeatures")
     public String showFeatureSelecters(Model model) throws SQLException {
 
-        model.addAttribute("columNames",databaseService.getColumns("FeatureData"));
+        model.addAttribute("columNames",databaseService.getColumns("featuredata"));
+        model.addAttribute("PlotInfo",new PlotInfo());
         return "columindex";
     }
-    @PostMapping(value="/plotnormal")
-    public String showPlotNormal(@RequestBody Map<String, String> json) throws IOException {
-        FeaturePair featurePair = new FeaturePair(json.get("featurename1"),json.get("featurename2"),featureServiceNormal);
+    @PostMapping(value="/plot")
+    public String showPlotNormal(@ModelAttribute PlotInfo plotInfo,Model model) throws IOException {
+        FeaturePair featurePair;
+        if(plotInfo.getType().equals("normal")){
+            featurePair = new FeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceNormal);
+        }else{
+            featurePair = new FeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceBinaer);
+        }
         featurePair.createPlot();
         featurePair.createPlotSummarized();
-        return "plotnormal";
+        model.addAttribute("imagepath",featurePair.getPlotPath());
+        model.addAttribute("imagepathSummarized",featurePair.getPlotPathSummarized());
+        return "plot";
     }
 }

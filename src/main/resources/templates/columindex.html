@@ -12,20 +12,27 @@
     <div class="row">
         <div class="col-md-4 mt-5">
                 <div class="form-group">
-                    <select th:field="*{columNames}" id="columNames1">
-                        <option value="">Select Feature</option>
-                        <option th:each="columName: ${columNames}"
-                                th:value="${columName}"
-                                th:text="${columName}">
-                        </option>
-                    </select>
-                    <select th:field="*{columNames}" id="columNames2">
-                        <option value="">Select Feature</option>
-                        <option th:each="columName: ${columNames}"
-                                th:value="${columName}"
-                                th:text="${columName}">
-                        </option>
-                    </select>
+                    <form method="post" th:action="@{plot}" th:object ="${PlotInfo}">
+                        <select th:field="*{feature1}" id="feature1">
+                            <option value="">Select Feature</option>
+                            <option th:each="columName: ${columNames}"
+                                    th:value="${columName}"
+                                    th:text="${columName}">
+                            </option>
+                        </select>
+                        <select th:field="*{feature2}" id="feature2">
+                            <option value="">Select Feature</option>
+                            <option th:each="columName: ${columNames}"
+                                    th:value="${columName}"
+                                    th:text="${columName}">
+                            </option>
+                        </select>
+                        <select id="type", required th:field ="*{type}">
+                            <option value="normal">Normal</option>
+                            <option value="binaer">Only two classes</option>
+                        </select>
+                        <input type="submit" value="Create Plot">
+                    </form>
                 </div>
 
         </div>

@@ -1,4 +1,4 @@
-package com.example.kanuledatawebsite.controller;
+package com.example.kanuledatawebsite.entities;
 
 import lombok.Getter;
 import lombok.Setter;

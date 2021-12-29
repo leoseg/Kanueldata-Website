@@ -2,19 +2,26 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Select columns to display</title>
+    <title>Feature Plot</title>
 
 </head>
 <body>
 
 <div class="container">
 
-</div>
-<div class=container">
-    <img src="${imagepath}"/>
-    <img src="${imagepathSummarized"/>
-</div>
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="form-group">
+                <img th:src="${imagepath}" />
+                <img th:src="${imagepathSummarized}" />
+                </form>
+            </div>
 
+        </div>
+
+    </div>
+
+</div>
 
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -24,3 +31,4 @@
 
 </body>
 </html>
+

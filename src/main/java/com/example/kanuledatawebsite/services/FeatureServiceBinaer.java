@@ -1,9 +1,7 @@
 package com.example.kanuledatawebsite.services;
 
-import com.example.kanuledatawebsite.dao.Featuredata;
+import com.example.kanuledatawebsite.dao.FeaturedataDao;
 import com.example.kanuledatawebsite.entities.Feature;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,11 +12,11 @@ import java.util.HashMap;
 public class FeatureServiceBinaer implements FeatureService{
 
     @Resource
-    Featuredata featuredata;
+    FeaturedataDao featuredataDao;
 
     @Override
     public Feature getFeature(String featureName) {
-        Feature feature = featuredata.GetFeature(featureName);
+        Feature feature = featuredataDao.GetFeature(featureName);
         HashMap<String, ArrayList<Float>> featureLabelvaluemap = feature.getLabelvaluemap();
         feature.setLabelvaluemap(transformLabels(featureLabelvaluemap));
         return feature;
@@ -26,7 +24,7 @@ public class FeatureServiceBinaer implements FeatureService{
 
     @Override
     public Feature getSummarizedFeature(String featureName) {
-        Feature feature = featuredata.GetSummarizedFeature(featureName);
+        Feature feature = featuredataDao.GetSummarizedFeature(featureName);
         HashMap<String, ArrayList<Float>> featureLabelvaluemap = feature.getLabelvaluemap();
         feature.setLabelvaluemap(transformLabels(featureLabelvaluemap));
         return feature;

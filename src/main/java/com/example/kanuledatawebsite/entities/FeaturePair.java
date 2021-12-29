@@ -1,11 +1,11 @@
 package com.example.kanuledatawebsite.entities;
 
-import com.example.kanuledatawebsite.entities.Feature;
 import com.example.kanuledatawebsite.services.FeatureService;
 import com.example.kanuledatawebsite.visualizer.ScatterPlot;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class FeaturePair {
@@ -23,16 +23,16 @@ public class FeaturePair {
         this.feature2Summarized =featureService.getSummarizedFeature(featurename2);
 
     }
-    public void createPlot() throws IOException {
+    public String createPlot(HttpServletRequest request) throws IOException {
         ScatterPlot scatterPlot =new ScatterPlot(feature1,feature2);
 
-        this.plotPath = scatterPlot.saveAsJpg("");
+        return scatterPlot.saveAsJpgServlet("",request);
 
     }
 
-    public void createPlotSummarized() throws IOException {
+    public String createPlotSummarized(HttpServletRequest request) throws IOException {
         ScatterPlot scatterPlotSummarized =new ScatterPlot(feature1Summarized,feature2Summarized);
-        this.plotPathSummarized= scatterPlotSummarized.saveAsJpg("_summarized");
+        return scatterPlotSummarized.saveAsJpgServlet("_summarized",request);
     }
 
 

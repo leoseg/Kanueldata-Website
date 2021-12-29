@@ -22,6 +22,7 @@ public class FeatureExtractor implements ResultSetExtractor<Feature> {
 
     @Override
     public Feature extractData(ResultSet rs) throws SQLException, DataAccessException{
+        this.feature = new Feature();
         ResultSetMetaData rsm = rs.getMetaData();
         for (int i = 1; i <= rsm.getColumnCount(); i++) {
             String columnName = rsm.getColumnName(i);

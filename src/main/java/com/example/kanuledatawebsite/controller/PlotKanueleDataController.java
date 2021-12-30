@@ -45,7 +45,7 @@ public class PlotKanueleDataController {
         return "columindex";
     }
     @PostMapping(value="/plot")
-    public String showPlotNormal(@ModelAttribute PlotInfo plotInfo, Model model, HttpServletRequest request) throws IOException {
+    public String showPlot(@ModelAttribute PlotInfo plotInfo, Model model, HttpServletRequest request) throws IOException {
         FeaturePair featurePair;
         if(plotInfo.getType().equals("normal")){
             featurePair = new FeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceNormal);

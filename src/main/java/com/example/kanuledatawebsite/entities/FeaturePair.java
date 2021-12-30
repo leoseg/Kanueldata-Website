@@ -1,7 +1,7 @@
 package com.example.kanuledatawebsite.entities;
 
 import com.example.kanuledatawebsite.services.FeatureService;
-import com.example.kanuledatawebsite.visualizer.ScatterPlot;
+import com.example.kanuledatawebsite.plotclasses.ScatterPlot;
 import lombok.Getter;
 import lombok.Setter;
 

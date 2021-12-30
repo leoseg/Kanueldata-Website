@@ -1,10 +1,9 @@
-package com.example.kanuledatawebsite.visualizer;
+package com.example.kanuledatawebsite.plotclasses;
 
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.annotation.Resource;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 

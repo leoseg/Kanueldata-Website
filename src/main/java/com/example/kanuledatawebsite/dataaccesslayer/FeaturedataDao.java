@@ -1,4 +1,4 @@
-package com.example.kanuledatawebsite.dao;
+package com.example.kanuledatawebsite.dataaccesslayer;
 
 import com.example.kanuledatawebsite.entities.Feature;
 

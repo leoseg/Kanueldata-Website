@@ -1,6 +1,6 @@
 package com.example.kanuledatawebsite.services;
 
-import com.example.kanuledatawebsite.dao.FeaturedataDao;
+import com.example.kanuledatawebsite.dataaccesslayer.FeaturedataDao;
 import com.example.kanuledatawebsite.entities.Feature;
 import org.springframework.stereotype.Service;
 

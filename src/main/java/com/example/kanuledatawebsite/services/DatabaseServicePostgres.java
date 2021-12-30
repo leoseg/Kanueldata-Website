@@ -1,6 +1,6 @@
 package com.example.kanuledatawebsite.services;
 
-import com.example.kanuledatawebsite.dao.Databasedao;
+import com.example.kanuledatawebsite.dataaccesslayer.Databasedao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

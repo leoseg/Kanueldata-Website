@@ -1,14 +1,12 @@
-package com.example.kanuledatawebsite.visualizer;
+package com.example.kanuledatawebsite.plotclasses;
 
 import com.example.kanuledatawebsite.entities.Feature;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.servlet.ServletUtilities;
 import org.jfree.data.xy.XYDataset;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
 
 public class ScatterPlot{

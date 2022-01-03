@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  spring_service:
+    image: datawebsiteimage:latest
+    ports:
+      - 8080:8080
+    env_file:
+      - secrets.env

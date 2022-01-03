@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * {@inheritDoc}
+ */
 @Repository
 public class DatabasedaoPostgres implements Databasedao{
 
@@ -25,6 +28,9 @@ public class DatabasedaoPostgres implements Databasedao{
         this.metaData = this.con.getMetaData();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ArrayList<String> getColumnnames(String tableName) throws SQLException {
         ArrayList<String> columnNames = new ArrayList<>();

@@ -13,6 +13,9 @@ public class DatabaseServicePostgres implements DatabaseService{
     @Resource
     Databasedao databaseDao;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ArrayList<String> getColumns(String tableName) throws SQLException {
 

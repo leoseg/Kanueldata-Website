@@ -24,11 +24,5 @@ public class ScatterPlot{
         String fileName = ServletUtilities.saveChartAsJPEG(chart, 700, 400, null, request.getSession());
         String chartURL = request.getContextPath() + "/chart?filename=" + fileName;
         return chartURL;
-//        String filepath_to_images= ("src/main/resources/static/images/");
-//
-//        File file = new File(filepath_to_images+ this.title+filenameAddition+".png");
-//        if (!file.exists()) file.createNewFile();
-//        ChartUtils.saveChartAsPNG(file,chart,400,600);
-//        return this.title+filenameAddition+".png";
     }
 }

@@ -6,6 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/**
+ * Custom userdetails for account registration see spring security UserDetails for more information
+ */
 public class CustomUserDetails implements UserDetails {
 
     private User user;

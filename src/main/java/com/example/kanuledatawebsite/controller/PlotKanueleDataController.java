@@ -7,6 +7,7 @@ import org.jfree.chart.servlet.DisplayChart;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Controller for all pages referring to the kanueledata
+ */
 @Controller
 @RequestMapping("/KanueleData")
 public class PlotKanueleDataController {
@@ -45,7 +49,7 @@ public class PlotKanueleDataController {
         return "columindex";
     }
     @PostMapping(value="/plot")
-    public String showPlot(@ModelAttribute PlotInfo plotInfo, Model model, HttpServletRequest request) throws IOException {
+    public String showPlot(@ModelAttribute PlotInfo plotInfo, Model model, HttpServletRequest request) throws IOException, DataAccessException {
         FeaturePair featurePair;
         if(plotInfo.getType().equals("normal")){
             featurePair = new FeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceNormal);

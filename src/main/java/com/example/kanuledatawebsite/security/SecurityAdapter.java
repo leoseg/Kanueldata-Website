@@ -31,6 +31,10 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
         return new CustomUserDetailsImpl();
     }
 
+    /**
+     * Creates an authentication provider using bcrypt as password encoder and the custom user details service
+     * @return
+     */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -44,6 +48,12 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
+
+    /**
+     * Configures security options
+     * @param http Object to be configured
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -54,8 +64,8 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .usernameParameter("email")
-                .defaultSuccessUrl("/users")
+                .usernameParameter("userName")
+                .defaultSuccessUrl("/KanueleData/selectfeatures")
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();

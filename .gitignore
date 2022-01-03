@@ -66,3 +66,4 @@ target
 .flattened-pom.xml
 secrets.yml
 .gradletasknamecache
+/secrets.env

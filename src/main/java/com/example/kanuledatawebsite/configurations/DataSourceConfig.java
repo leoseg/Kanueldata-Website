@@ -21,6 +21,10 @@ public class DataSourceConfig {
         return new DataSourceProperties();
     }
 
+    /**
+     * Builds datasource from application properties
+     * @return builded datasource
+     */
     @Bean
     @ConfigurationProperties("spring.datasource.configuration")
     public DataSource regularDataSource() {

@@ -1,6 +1,7 @@
 package com.example.kanuledatawebsite.dataaccesslayer;
 import com.example.kanuledatawebsite.entities.Feature;
 import com.example.kanuledatawebsite.mapper.FeatureExtractor;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -25,8 +26,7 @@ public class FeaturedataDaoImpl implements FeaturedataDao {
                 "FROM featuredata " +
                 "INNER JOIN patientdata ON \"featuredata\".\"PatNr\" = \"patientdata\".\"PatNr\"";
 
-        return parameterTemplate.query(sqlStatement,this.extractor);
-
+            return parameterTemplate.query(sqlStatement,this.extractor);
     }
 
 

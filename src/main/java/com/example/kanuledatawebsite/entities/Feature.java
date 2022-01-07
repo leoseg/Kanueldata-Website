@@ -8,8 +8,13 @@ import java.util.HashMap;
 
 @Component
 public class Feature {
-
+    /**
+     * Name of Feature
+     */
     @Getter@Setter String FeatureName;
+    /**
+     * List with a label of the patient and all corresponding datapoints
+     */
     @Getter@Setter HashMap<String,ArrayList<Float>> Labelvaluemap;
 
 }

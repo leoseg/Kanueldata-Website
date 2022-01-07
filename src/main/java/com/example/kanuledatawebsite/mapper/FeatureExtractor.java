@@ -13,13 +13,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-//maps sql query to featurenitty
+/**
+ * Maps an colum of a dataframe to a feature object
+ */
 @Component
 public class FeatureExtractor implements ResultSetExtractor<Feature> {
 
     @Resource
     Feature feature;
 
+    /**
+     * extracts data from the resultset
+     * @param rs resultset of sql query
+     * @return feature object
+     * @throws SQLException because of evaluating of sql statements
+     * @throws DataAccessException because database is accessed
+     */
     @Override
     public Feature extractData(ResultSet rs) throws SQLException, DataAccessException{
         this.feature = new Feature();
@@ -34,6 +43,13 @@ public class FeatureExtractor implements ResultSetExtractor<Feature> {
         return this.feature;
     }
 
+    /**
+     * Transform the colum with the datapoints of the feature to an HashMmap
+     * labels are "geblockt", "biesalski" and "kanuele"
+     * @param rs resultset of sql query
+     * @return HashMap , where each key of the labels correspond to an array of its label
+     * @throws SQLException because sql resultset is accessed
+     */
     private HashMap<String, ArrayList<Float>>  CreateLabelvalueMap(ResultSet rs) throws SQLException{
         HashMap<String,ArrayList<Float>> LabelvalueMap = new HashMap<>();
         while( rs.next()){

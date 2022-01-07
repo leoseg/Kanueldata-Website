@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+/**
+ * Gets feature service with the normal class separation ("geblockt", "no kanuele", "biesalski")
+ */
 @Service(value="normal")
 public class FeatureServiceNormal implements FeatureService{
 

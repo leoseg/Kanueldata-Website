@@ -8,6 +8,9 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Gets features for the binary categorization ("kanuele", "no kanuele")
+ */
 @Service(value="binaer")
 public class FeatureServiceBinaer implements FeatureService{
 
@@ -31,6 +34,11 @@ public class FeatureServiceBinaer implements FeatureService{
 
     }
 
+    /**
+     * Transforms orginal labels from normal categorization to binaer categorization
+     * @param labelvalueMap HashMap to do transforming
+     * @return new HashMap with new values
+     */
     private HashMap<String,ArrayList<Float>> transformLabels(HashMap<String, ArrayList<Float>> labelvalueMap){
         labelvalueMap.computeIfAbsent("kanuele",k->new ArrayList<>()).addAll(labelvalueMap.get("Biesalski"));
         labelvalueMap.computeIfAbsent("kanuele",k->new ArrayList<>()).addAll(labelvalueMap.get("geblockt"));

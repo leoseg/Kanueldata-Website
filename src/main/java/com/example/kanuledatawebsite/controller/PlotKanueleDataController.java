@@ -36,11 +36,21 @@ public class PlotKanueleDataController {
     @Resource
     DatabaseService databaseService;
 
+    /**
+     * Registrates the Servlet for displaying the chart at the website
+     * @return new registration bean
+     */
     @Bean
     public ServletRegistrationBean MyServlet() {
         return new ServletRegistrationBean<>(new DisplayChart(),"/chart");
     }
 
+    /**
+     * Returns page with two multiselects of the features of the data
+     * @param model model for thymeleaf page
+     * @return name of page
+     * @throws SQLException because database is accessed
+     */
     @GetMapping(value="/selectfeatures")
     public String showFeatureSelecters(Model model) throws SQLException {
 
@@ -48,6 +58,16 @@ public class PlotKanueleDataController {
         model.addAttribute("PlotInfo",new PlotInfo());
         return "columindex";
     }
+
+    /**
+     *
+     * @param plotInfo info of the plot (feature names and type: normal or binear)
+     * @param model model for thymeleaf page
+     * @param request http servlet request
+     * @return pagename
+     * @throws IOException because of featurepair create plot function
+     * @throws DataAccessException because database is accessed by featurepair
+     */
     @PostMapping(value="/plot")
     public String showPlot(@ModelAttribute PlotInfo plotInfo, Model model, HttpServletRequest request) throws IOException, DataAccessException {
         FeaturePair featurePair;

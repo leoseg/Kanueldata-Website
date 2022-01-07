@@ -7,9 +7,18 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Extends XYSeriesCollection so arraylists can be used for dataset creation
+ */
 @Resource
 public class XYDatasetImpl extends XYSeriesCollection
 {
+    /**
+     * Adds a pair of lists to the series of the dataset
+     * @param values1 x values
+     * @param values2 y values
+     * @param Label label for the series
+     */
     private void addListPair(ArrayList<Float> values1, ArrayList<Float> values2,String Label){
         XYSeries xySeries = new XYSeries(Label);
         for(int i=0;i<values1.size();i++){
@@ -18,6 +27,12 @@ public class XYDatasetImpl extends XYSeriesCollection
         this.addSeries(xySeries);
     }
 
+    /**
+     * creates of two hashmap the corresponding series, both should have form of key:arraylist and
+     * have the same keys (for scatterplots)
+     * @param labelValueMap first labelvaluemap with x values
+     * @param labelValueMap2 second labelvaluemap with y values
+     */
     public XYDatasetImpl (HashMap<String,ArrayList<Float>> labelValueMap,HashMap<String,ArrayList<Float>> labelValueMap2){
         for(String key :labelValueMap.keySet()){
             this.addListPair(labelValueMap.get(key),labelValueMap2.get(key), key);

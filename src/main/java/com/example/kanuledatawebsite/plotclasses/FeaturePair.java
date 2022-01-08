@@ -1,9 +1,11 @@
-package com.example.kanuledatawebsite.entities;
+package com.example.kanuledatawebsite.plotclasses;
 
+import com.example.kanuledatawebsite.entities.Feature;
 import com.example.kanuledatawebsite.services.FeatureService;
 import com.example.kanuledatawebsite.plotclasses.ScatterPlot;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -11,25 +13,26 @@ import java.io.IOException;
 /**
  * Class for pair of features for displaying
  */
+@Component
+
 public class FeaturePair {
     @Getter@Setter Feature feature1;
     @Getter@Setter Feature feature2;
     @Getter@Setter Feature feature1Summarized;
     @Getter@Setter Feature feature2Summarized;
-    @Getter@Setter String plotPath;
-    @Getter@Setter String plotPathSummarized;
+
 
     /**
-     * On creation gets feature object for both feature names
+     * Sets the feature pairs (normal and summarized) by using the names and the feature service
      * @param featurename1 name of first feature
      * @param featurename2 name of second feature
      * @param featureService feature service either binaer or normal
      */
-    public FeaturePair (String featurename1,String featurename2,FeatureService featureService){
-        this.feature1 = featureService.getFeature(featurename1);
-        this.feature2 = featureService.getFeature(featurename2);
-        this.feature1Summarized =featureService.getSummarizedFeature(featurename1);
-        this.feature2Summarized =featureService.getSummarizedFeature(featurename2);
+    public void setFeaturePair (String featurename1,String featurename2,FeatureService featureService){
+        setFeature1(featureService.getFeature(featurename1));
+        setFeature2(featureService.getFeature(featurename2));
+        setFeature1Summarized(featureService.getSummarizedFeature(featurename1));
+        setFeature2Summarized(featureService.getSummarizedFeature(featurename2));
 
     }
 

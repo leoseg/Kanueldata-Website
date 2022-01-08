@@ -1,5 +1,5 @@
 package com.example.kanuledatawebsite.controller;
-import com.example.kanuledatawebsite.entities.FeaturePair;
+import com.example.kanuledatawebsite.plotclasses.FeaturePair;
 import com.example.kanuledatawebsite.entities.PlotInfo;
 import com.example.kanuledatawebsite.services.DatabaseService;
 import com.example.kanuledatawebsite.services.FeatureService;
@@ -36,6 +36,9 @@ public class PlotKanueleDataController {
     @Resource
     DatabaseService databaseService;
 
+    @Resource
+    FeaturePair featurePair;
+
     /**
      * Registrates the Servlet for displaying the chart at the website
      * @return new registration bean
@@ -70,11 +73,10 @@ public class PlotKanueleDataController {
      */
     @PostMapping(value="/plot")
     public String showPlot(@ModelAttribute PlotInfo plotInfo, Model model, HttpServletRequest request) throws IOException, DataAccessException {
-        FeaturePair featurePair;
         if(plotInfo.getType().equals("normal")){
-            featurePair = new FeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceNormal);
+            featurePair.setFeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceNormal);
         }else{
-            featurePair = new FeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceBinaer);
+            featurePair.setFeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceBinaer);
         }
         String imageUrl = featurePair.createPlot(request);
         String imageUrlSummarized = featurePair.createPlotSummarized(request);

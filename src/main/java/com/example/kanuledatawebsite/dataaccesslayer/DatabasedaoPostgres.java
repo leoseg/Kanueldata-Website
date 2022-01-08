@@ -9,6 +9,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * {@inheritDoc}
@@ -32,8 +33,8 @@ public class DatabasedaoPostgres implements Databasedao{
      * {@inheritDoc}
      */
     @Override
-    public ArrayList<String> getColumnnames(String tableName) throws SQLException {
-        ArrayList<String> columnNames = new ArrayList<>();
+    public List<String> getColumnnames(String tableName) throws SQLException {
+        List<String> columnNames = new ArrayList<>();
         ResultSet resultSet = this.metaData.getColumns(null, null, tableName, null);
         while (resultSet.next()) {
             columnNames.add(resultSet.getString("COLUMN_NAME"));

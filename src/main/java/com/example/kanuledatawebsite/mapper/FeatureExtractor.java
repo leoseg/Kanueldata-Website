@@ -11,6 +11,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -50,10 +51,10 @@ public class FeatureExtractor implements ResultSetExtractor<Feature> {
      * @return HashMap , where each key of the labels correspond to an array of its label
      * @throws SQLException because sql resultset is accessed
      */
-    private HashMap<String, ArrayList<Float>>  CreateLabelvalueMap(ResultSet rs) throws SQLException{
-        HashMap<String,ArrayList<Float>> LabelvalueMap = new HashMap<>();
+    private HashMap<String, List<Double>> CreateLabelvalueMap(ResultSet rs) throws SQLException{
+        HashMap<String,List<Double>> LabelvalueMap = new HashMap<>();
         while( rs.next()){
-            LabelvalueMap.computeIfAbsent(rs.getString("Status nach"),k -> new ArrayList<>()).add(rs.getFloat(this.feature.getFeatureName()));
+            LabelvalueMap.computeIfAbsent(rs.getString("Status nach"),k -> new ArrayList<>()).add(rs.getDouble(this.feature.getFeatureName()));
         }
         return LabelvalueMap;
     }

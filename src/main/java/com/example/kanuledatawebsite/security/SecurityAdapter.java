@@ -1,6 +1,7 @@
 package com.example.kanuledatawebsite.security;
 import com.example.kanuledatawebsite.services.CustomUserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,6 +16,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@ConditionalOnWebApplication
 public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -33,7 +35,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
     /**
      * Creates an authentication provider using bcrypt as password encoder and the custom user details service
-     * @return
+     * @return new instance of CustomUserDetailsImpl
      */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -45,14 +47,13 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth)  {
         auth.authenticationProvider(authenticationProvider());
     }
 
     /**
      * Configures security options
      * @param http Object to be configured
-     * @throws Exception
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {

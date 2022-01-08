@@ -63,7 +63,7 @@ public class UserLoginControllerTests {
     }
 
     @Test
-    public void testProcessRegistter() throws Exception{
+    public void testProcessRegister() throws Exception{
         ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
 
 

@@ -2,6 +2,7 @@ package com.example.kanuledatawebsite.dataaccesslayer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * interface for common functions of the database
@@ -13,6 +14,6 @@ public interface Databasedao {
      * @return  List with columnames
      * @throws SQLException sqlexception cause database access
      */
-    ArrayList<String> getColumnnames(String tableName) throws SQLException;
+    List<String> getColumnnames(String tableName) throws SQLException;
 
 }

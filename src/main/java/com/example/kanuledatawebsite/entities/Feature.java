@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Component
 public class Feature {
@@ -15,6 +16,6 @@ public class Feature {
     /**
      * List with a label of the patient and all corresponding datapoints
      */
-    @Getter@Setter HashMap<String,ArrayList<Float>> Labelvaluemap;
+    @Getter@Setter HashMap<String, List<Double>> Labelvaluemap;
 
 }

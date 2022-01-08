@@ -2,6 +2,7 @@ package com.example.kanuledatawebsite.services;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface DatabaseService {
     /**
@@ -10,5 +11,5 @@ public interface DatabaseService {
      * @return list of column anmes
      * @throws SQLException sqlexception cause database access
      */
-    ArrayList<String> getColumns(String tableName) throws SQLException;
+    List<String> getColumns(String tableName) throws SQLException;
 }

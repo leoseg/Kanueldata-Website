@@ -3,9 +3,6 @@ package com.example.kanuledatawebsite.plotclasses;
 import com.example.kanuledatawebsite.entities.Feature;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.category.ScatterRenderer;
-import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.servlet.ServletUtilities;
 import org.jfree.data.xy.XYDataset;
 
@@ -29,6 +26,7 @@ public class ScatterPlot{
         XYDataset xyDataset = new XYDatasetImpl(feature1.getLabelvaluemap(), feature2.getLabelvaluemap());
         this.title = feature1.getFeatureName()+"_"+feature2.getFeatureName();
         this.chart = ChartFactory.createScatterPlot(title, feature1.getFeatureName(), feature2.getFeatureName(), xyDataset);
+
     }
 
     /**
@@ -40,7 +38,7 @@ public class ScatterPlot{
      */
     public String saveAsJpgServlet(String filenameAddition, HttpServletRequest request) throws IOException {
         String fileName = ServletUtilities.saveChartAsJPEG(chart, 700, 400, null, request.getSession());
-        String chartURL = request.getContextPath() + "/chart?filename=" + fileName;
-        return chartURL;
+        return request.getContextPath() + "/chart?filename=" + fileName;
+
     }
 }

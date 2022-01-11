@@ -75,7 +75,7 @@ public class PlotKanueleDataController {
     public String showPlot(@ModelAttribute PlotInfo plotInfo, Model model, HttpServletRequest request) throws IOException, DataAccessException {
         if(plotInfo.getType().equals("normal")){
             featurePair.setFeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceNormal);
-        }else{
+        }else if (plotInfo.getType().equals("binaer")){
             featurePair.setFeaturePair(plotInfo.getFeature1(),plotInfo.getFeature2(),featureServiceBinaer);
         }
         String imageUrl = featurePair.createPlot(request);

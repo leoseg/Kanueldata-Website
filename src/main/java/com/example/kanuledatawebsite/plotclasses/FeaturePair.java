@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * Class for pair of features for displaying
+ * Class for plotting pairs of features as scatterplot for summarized and normal data
  */
 @Component
 

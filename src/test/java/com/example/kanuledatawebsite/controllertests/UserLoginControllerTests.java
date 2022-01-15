@@ -1,34 +1,24 @@
 package com.example.kanuledatawebsite.controllertests;
-
 import com.example.kanuledatawebsite.controller.UserLoginController;
 import com.example.kanuledatawebsite.dataaccesslayer.UserRepository;
 import com.example.kanuledatawebsite.entities.User;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.sql.DataSource;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(controllers = UserLoginController.class)
 public class UserLoginControllerTests {
 
@@ -59,7 +49,7 @@ public class UserLoginControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("registration_form"))
                 .andExpect(model().attributeExists("user"))
-                .andExpect(model().attribute("user", Matchers.equalTo(new User())));
+                .andExpect(model().attribute("user", Matchers.isA(User.class)));
     }
 
     @Test

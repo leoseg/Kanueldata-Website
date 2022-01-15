@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 
-@RunWith(SpringRunner.class)
+
 @WebMvcTest(controllers = PlotKanueleDataController.class)
 public class PlotKanueleDataControllerTests {
 

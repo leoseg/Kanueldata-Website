@@ -8,7 +8,15 @@ Other categorization option is binaer where the labels are either "kanuel" or "n
 
 
 ## Purpose
-Mainly for practicing Spring Boot and Java. Originated from one of my Projekts at the TU-Berlin. 
-Project can be run in a dockerfile local. Postgress authentication is needed.
+Originated from one of my Projekts at the TU-Berlin. 
+Project can be run in a dockerfile local. Postgress authentication is needed. Idea is to implement and transfer 
+the code from the university project in python to java and display at a website.
+Missing:
+    
+    - feature selection -> display best features with scores
+
+    - training model and evaluating results -> displaying results
+    
+    - possibility to feed in new data 
 
 

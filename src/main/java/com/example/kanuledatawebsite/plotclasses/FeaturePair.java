@@ -45,7 +45,7 @@ public class FeaturePair {
     public String createPlot(HttpServletRequest request) throws IOException {
         ScatterPlot scatterPlot =new ScatterPlot(feature1,feature2);
 
-        return scatterPlot.saveAsJpgServlet("",request);
+        return scatterPlot.saveAsJpgServlet(request);
 
     }
     /**
@@ -56,7 +56,7 @@ public class FeaturePair {
      */
     public String createPlotSummarized(HttpServletRequest request) throws IOException {
         ScatterPlot scatterPlotSummarized =new ScatterPlot(feature1Summarized,feature2Summarized);
-        return scatterPlotSummarized.saveAsJpgServlet("_summarized",request);
+        return scatterPlotSummarized.saveAsJpgServlet(request);
     }
 
 

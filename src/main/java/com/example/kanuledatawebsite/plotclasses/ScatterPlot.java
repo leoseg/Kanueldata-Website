@@ -31,12 +31,11 @@ public class ScatterPlot{
 
     /**
      * Creates a jpg out of the plot and saves it as url
-     * @param filenameAddition while be added to the filename
      * @param request request to get the url for saving the jpg
      * @return url of the chart
      * @throws IOException because an image writing operation is performed
      */
-    public String saveAsJpgServlet(String filenameAddition, HttpServletRequest request) throws IOException {
+    public String saveAsJpgServlet(HttpServletRequest request) throws IOException {
         String fileName = ServletUtilities.saveChartAsJPEG(chart, 700, 400, null, request.getSession());
         return request.getContextPath() + "/chart?filename=" + fileName;
 

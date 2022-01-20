@@ -17,12 +17,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.springframework.security.test.context.support.WithMockUser;
 
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

@@ -52,8 +52,8 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Configures security options
-     * @param http Object to be configured
+     * Configures security filters
+     * @param http Element to be configured
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {

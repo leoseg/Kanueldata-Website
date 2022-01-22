@@ -38,7 +38,7 @@ public class FeaturePair {
 
     /**
      * creates a scatterplot and returns the url to the chart
-     * @param request http request for creating the servlet
+     * @param request http request with information about the request
      * @return url to chart
      * @throws IOException because image is saved
      */
@@ -50,7 +50,7 @@ public class FeaturePair {
     }
     /**
      * creates a scatterplot for the summarized features and returns the url to the chart
-     * @param request http request for creating the servlet
+     * @param request http request with information of the request
      * @return url to chart
      * @throws IOException because image is saved
      */

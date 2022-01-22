@@ -63,7 +63,7 @@ public class PlotKanueleDataController {
     }
 
     /**
-     *
+     *Creates and shows a plot of the values of two features as datapoints in a XY-Plane
      * @param plotInfo info of the plot (feature names and type: normal or binear)
      * @param model model for thymeleaf page
      * @param request http servlet request

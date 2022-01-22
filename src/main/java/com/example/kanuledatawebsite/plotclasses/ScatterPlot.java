@@ -30,10 +30,10 @@ public class ScatterPlot{
     }
 
     /**
-     * Creates a jpg out of the plot and saves it as url
-     * @param request request to get the url for saving the jpg
+     * Creates and saves a temporary jpg and returns the url
+     * @param request request with information about the request
      * @return url of the chart
-     * @throws IOException because an image writing operation is performed
+     * @throws IOException because the saveChartAsJPEG execution
      */
     public String saveAsJpgServlet(HttpServletRequest request) throws IOException {
         String fileName = ServletUtilities.saveChartAsJPEG(chart, 700, 400, null, request.getSession());
